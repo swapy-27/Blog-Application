@@ -1,13 +1,29 @@
 import '../css/createpost.css';
 import {useState} from 'react'
-const CreatePostComponent = ()=>{
-    const [title,setTitle]= useState();
-    const [subTitle,setsubTitle]= useState();
-    const [content,setcontent]= useState();
-    const handleSubmit =(e)=>{
+import { doc,setDoc } from 'firebase/firestore/lite';
+import useFormInput from './hooks';
+
+import db from '../firebase'
+
+const CreatePostComponent =   ()=>{
+    const title= useFormInput('');
+    const subTitle= useFormInput('');
+    const content= useFormInput('');
+    const handleSubmit = async(e)=>{
             e.preventDefault();
-            console.log('hey')
-            console.log(title,subTitle,content);
+            
+           const postRef =  doc(db,'posts',title.value);
+           
+           await setDoc(postRef,
+            {
+                title:title.value,
+                subTitle:subTitle.value,
+                content:content.value,
+                createdAt:new Date()
+            })
+
+ 
+            
     }
 
     return (
@@ -16,23 +32,18 @@ const CreatePostComponent = ()=>{
             <form>
             <div className='form-field'>
                 <label>Title</label>
-                <input value={title} onChange={(e)=>{
-                    setTitle(e.target.value);
-                }}/>
+                <input {...title}
+                />
 
             </div>
             <div className='form-field'>
                 <label>Sub-Title</label>
-                <input value={subTitle} onChange={(e)=>{
-                    setsubTitle(e.target.value);
-                }}/>
+                <input {...subTitle}/>
                 
             </div>
             <div className='form-field'>
                 <label>Content</label>
-                <textarea value={content} onChange={(e)=>{
-                    setcontent(e.target.value);
-                }}></textarea>
+                <textarea {...content}></textarea>
                 
             </div>
 
