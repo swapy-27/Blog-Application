@@ -1,6 +1,6 @@
 import '../css/createpost.css';
 
-import { doc, setDoc } from 'firebase/firestore/lite';
+import { collection, doc, setDoc, addDoc } from 'firebase/firestore/lite';
 import useFormInput from './hooks';
 
 import db from '../firebase'
@@ -11,19 +11,12 @@ const CreatePostComponent = () => {
     const content = useFormInput('');
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const postRef = doc(db, 'posts', title.value);
-
-        await setDoc(postRef,
-            {
-                title: title.value,
-                subTitle: subTitle.value,
-                content: content.value,
-                createdAt: new Date()
-            })
-
-
-
+        await addDoc(collection(db, "posts"), {
+            title: title.value,
+            subTitle: subTitle.value,
+            content: content.value,
+            createdAt: new Date()
+        });
     }
 
     return (

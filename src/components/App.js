@@ -10,7 +10,7 @@ function App() {
       <Routes>
 
         <Route exact path='/' element={<Home/>} />
-        <Route exact path='/post/:id' element={<PostDetail/>} />
+        <Route exact path='/post/:postId' element={<PostDetail/>} />
         <Route exact path='/create-post' element={<CreatePostComponent/>} />
 
       </Routes>

@@ -29,3 +29,29 @@
     height: 25px;
     
 }
+
+.postdetail_container{
+    margin: 40px;
+    border: 2px solid blue;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    min-height:400px;
+    width:800px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.postdetail_container > h2{
+    font-family: sans-serif;
+    font-size:xx-large;
+    color: brown;
+    border-bottom: 1px solid black;
+
+}
+.postdetail_container > p{
+    margin-top: 10px;
+    width:750px;
+    overflow-wrap: break-word;
+
+}
