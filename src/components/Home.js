@@ -2,7 +2,11 @@ import { useState, useEffect } from 'react';
 import db from '../firebase';
 import { collection, getDocs } from 'firebase/firestore/lite';
 import '../css/home.css'
-import {Link} from 'react-router-dom'
+import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+
+
+
 const Home = () => {
     const [posts, setPosts] = useState([]);
 
@@ -29,11 +33,12 @@ const Home = () => {
 
 
     }, [])
+
     return (
         <div className="home_container">
             <div style={styles.header_container}>
             <h2 style={styles.heading}>Tech Blog </h2>
-            <h3 className='blog-by'>By-Swapnil</h3>
+            <SubHeading>By-Swapnil</SubHeading>
             </div>
             {posts.map(
                 (post,index) => {
@@ -50,7 +55,13 @@ const Home = () => {
         </div>
     )
 }
+var SubHeading = styled.h3`
+    
+    color:red;
+    border-bottom: 1px solid red
+    
 
+` ;
 //inline styling 
 const styles ={
     heading :{
