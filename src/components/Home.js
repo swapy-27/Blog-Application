@@ -31,8 +31,8 @@ const Home = () => {
     }, [])
     return (
         <div className="home_container">
-            <div>
-            <h2>Tech Blog </h2>
+            <div style={styles.header_container}>
+            <h2 style={styles.heading}>Tech Blog </h2>
             <h3 className='blog-by'>By-Swapnil</h3>
             </div>
             {posts.map(
@@ -49,5 +49,19 @@ const Home = () => {
             )}
         </div>
     )
+}
+
+//inline styling 
+const styles ={
+    heading :{
+        fontSize:56,
+    },
+    header_container:{
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center',
+        marginBottom:10
+
+    }
 }
 export default Home;

@@ -1,5 +1,8 @@
 import '../css/createpost.css';
 
+// in this way webpack give us uique class and the scope of that class is only limited to this js code only .
+import classes from '../css/button.module.css'
+
 import { collection, doc, setDoc, addDoc } from 'firebase/firestore/lite';
 import useFormInput from './hooks';
 
@@ -40,7 +43,7 @@ const CreatePostComponent = () => {
 
                 </div>
 
-                <button className='create-post-btn' onClick={handleSubmit}>Create-Post</button>
+                <button className={classes.createPostBtn} onClick={handleSubmit}>Create-Post</button>
             </form>
         </div>
     )
